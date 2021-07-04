@@ -4,6 +4,12 @@ spring:
     url: jdbc:mysql://localhost:3306/passjava_cms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root
     password: root
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  application:
+    name: passjava-content
 mybatis-plus:
   mapper-locations: classpth:/mapper/**/*.xml
   global-config:

@@ -25,7 +25,7 @@ import com.jackson0714.common.utils.R;
  * @date 2021-07-03 22:52:56
  */
 @RestController
-@RequestMapping("channel/channel")
+@RequestMapping("channel")
 public class ChannelController {
     @Autowired
     private ChannelService channelService;
