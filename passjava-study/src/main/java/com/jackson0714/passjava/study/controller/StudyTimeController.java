@@ -1,6 +1,7 @@
 package com.jackson0714.passjava.study.controller;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,21 @@ import com.jackson0714.common.utils.R;
 @RestController
 @RequestMapping("study/studytime")
 public class StudyTimeController {
+    private final StudyTimeService studyTimeService;
+
     @Autowired
-    private StudyTimeService studyTimeService;
+    public StudyTimeController(StudyTimeService studyTimeService) {
+        this.studyTimeService = studyTimeService;
+    }
+
+    @RequestMapping("/member/list/test/{id}")
+    public R memberStudyTimeTest(@PathVariable("id") Long id){
+        StudyTimeEntity studyTimeEntity = new StudyTimeEntity();
+        studyTimeEntity.setId(id);
+        studyTimeEntity.setTotalTime(100);
+        studyTimeEntity.setQuesType(1L);
+        return R.ok().put("studyTime", Collections.singletonList(studyTimeEntity));
+    }
 
     /**
      * 列表
