@@ -17,6 +17,12 @@
 
 
     <dependencies>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+
         <!--mybatis-plus DAO层工具 https://mp.baomidou.com/-->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -47,6 +53,12 @@
             <artifactId>servlet-api</artifactId>
             <version>2.5</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>

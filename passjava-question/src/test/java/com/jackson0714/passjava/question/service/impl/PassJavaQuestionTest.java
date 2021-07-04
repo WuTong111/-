@@ -11,7 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -39,7 +38,7 @@ public class PassJavaQuestionTest {
 
     @Test
     public void selectType(){
-        List<TypeEntity> list = typeService.list(new QueryWrapper<TypeEntity>().eq("id",1));
+        List<TypeEntity> list = typeService.list();
         list.forEach(System.out::println);
         System.out.println("查询成功");
     }
