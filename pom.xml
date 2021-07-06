@@ -26,6 +26,7 @@
         </dependencies>
     </dependencyManagement>
     <modules>
+        <module>passjava-gateway</module>
         <module>passjava-content</module>
         <module>passjava-member</module>
         <module>passjava-question</module>

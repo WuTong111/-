@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,10 +49,9 @@ public class ChannelController {
      * 列表
      */
     @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list(@RequestParam Map<String, Object> params) throws Exception {
         PageUtils page = channelService.queryPage(params);
-
-        return R.ok().put("page", page);
+        throw new Exception("test");
     }
 
 
@@ -69,7 +69,7 @@ public class ChannelController {
      * 保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody ChannelEntity channel){
+    public R save(@Validated @RequestBody ChannelEntity channel){
 		channelService.save(channel);
 
         return R.ok();

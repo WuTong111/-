@@ -7,6 +7,8 @@ import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
 
+import javax.validation.constraints.Positive;
+
 /**
  * 渠道-渠道表
  * 
@@ -39,6 +41,7 @@ public class ChannelEntity implements Serializable {
 	/**
 	 * 删除标记（0-正常，1-删除）
 	 */
+	@Positive
 	private Integer delFlag;
 	/**
 	 * 创建时间
