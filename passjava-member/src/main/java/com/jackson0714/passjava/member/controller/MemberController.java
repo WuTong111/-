@@ -5,6 +5,8 @@ import java.util.Map;
 
 import com.jackson0714.passjava.member.feign.StudyTimeFeignService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,10 +28,17 @@ import javax.annotation.Resource;
  * @email jackson0585@163.com
  * @date 2021-07-04 15:40:01
  */
+@RefreshScope       //动态刷新nacos配置
 @RestController
 @RequestMapping("member/member")
 public class MemberController {
     private final MemberService memberService;
+
+    @Value("${member.nickname}")
+    private String nickname;
+
+    @Value("${member.age}")
+    private Integer age;
 
     @Resource
     private StudyTimeFeignService studyTimeFeignService;
@@ -37,6 +46,11 @@ public class MemberController {
     @Autowired
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
+    }
+
+    @RequestMapping("/test-local-config")
+    public R testLocalConfig(){
+        return R.ok().put("nickName", nickname).put("age", age);
     }
 
     @RequestMapping("/studytime/list/test/{id}")

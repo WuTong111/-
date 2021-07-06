@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,11 +26,23 @@ import com.jackson0714.common.utils.R;
  * @email jackson0585@163.com
  * @date 2021-07-03 22:52:56
  */
+@RefreshScope
 @RestController
-@RequestMapping("channel")
+@RequestMapping("channel/channel")
 public class ChannelController {
     @Autowired
     private ChannelService channelService;
+
+    @Value("${channel.nickname}")
+    private String nickName;
+
+    @Value("${channel.url}")
+    private String url;
+
+    @RequestMapping("/sample/config")
+    public R testConfig(){
+        return R.ok().put("channel.nickname", nickName).put("channel.url",url);
+    }
 
     /**
      * 列表
